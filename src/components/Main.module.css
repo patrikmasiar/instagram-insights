@@ -13,14 +13,17 @@
 
 .title {
   text-align: center;
-  font-size: 30px;
+  font-size: 45px;
+  color: #000;
   font-weight: bold;
+  font-family: 'Yellowtail', cursive;
 }
 
 .subtitle {
   text-align: center;
   font-weight: 100;
   font-size: 13px;
+  margin-top: 10px;
 }
 
 .subtitle a {
