@@ -47,6 +47,7 @@ const Form = () => {
 
   return (
     <div className={style.wrapper}>
+      {isLoading && <div className={style.loader}><span className={style.loaderLabel}>LOADING DATA...</span></div>}
       {isError !== false && <div>Error, please try again</div>}
       <span className={style.label}>
         User ID <a href="https://codeofaninja.com/tools/find-instagram-user-id" target="_blank"><i>generate here</i></a>
