@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import style from './Form.module.css';
 import axios from 'axios';
+import Insights from './Insights';
 
 const Form = () => {
   const [userId, setUserId] = useState(null);
@@ -61,6 +62,9 @@ const Form = () => {
       <button type='button' onClick={getData} className={style.button}>
         Submit
       </button>
+      <Insights
+        data={{followersData, followingData, mediaData}}
+      />
     </div>
   );
 }
