@@ -115,7 +115,7 @@ const Insights = ({data = null, isLoading = false}) => {
       {(!!data && data.followersData && !isLoading) && (
         <div className={style.downloadWrapper}>
           <ExcelFile
-            filename={`IG-insights-${moment(new Date()).format('DD/MM/YYYY')}`}
+            filename={`IG-insights-${moment(new Date()).format('YYYY-MM-DD')}`}
             element={<button
               type="button"
               className={style.downloadButton}
