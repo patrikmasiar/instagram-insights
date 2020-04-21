@@ -5,7 +5,7 @@
 }
 
 .igLogo {
-  height: 200px;
+  height: 150px;
   width: auto;
   align-self: center;
   margin-top: 20px;
@@ -14,7 +14,7 @@
 
 .title {
   text-align: center;
-  font-size: 45px;
+  font-size: 40px;
   color: #000;
   font-weight: bold;
   font-family: 'Yellowtail', cursive;
