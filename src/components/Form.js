@@ -56,6 +56,7 @@ const Form = () => {
         value={userId === null ? '' : userId}
         onChange={e => setUserId(e.target.value)}
         className={style.input}
+        placeholder="User ID ..."
       />
       <button type='button' onClick={getData} className={style.button}>
         Submit
