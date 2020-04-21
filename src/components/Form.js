@@ -17,6 +17,7 @@ const Form = () => {
 
   const getData = async () => {
     if (userId === null) {
+      alert('Insert User ID, please.');
       return false;
     }
 
