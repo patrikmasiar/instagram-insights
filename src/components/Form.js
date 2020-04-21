@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import style from './Form.module.css';
+import axios from 'axios';
 
 const Form = () => {
   const [userId, setUserId] = useState(null); //find your id (all numerical) here : https://codeofaninja.com/tools/find-instagram-user-id
@@ -21,57 +22,26 @@ const Form = () => {
 
     setLoading(true);
 
-    fetch(`${instagramBaseUrl}${followersQuery}`)
-    .then(res => res.json())
-    .then(
-      (result) => {
-       setFollowersData(result.data.user.edge_followed_by.count)
-      },
-      // Note: it's important to handle errors here
-      // instead of a catch() block so that we don't swallow
-      // exceptions from actual bugs in components.
-      (error) => {
-        setLoading(false);
-        setError(error)
-      }
-    );
+    const followersResponse = await axios.get(`${instagramBaseUrl}${followersQuery}`);
 
-    fetch(`${instagramBaseUrl}${followingQuery}`)
-    .then(res => res.json())
-    .then(
-      (result) => {
-       setFollowingData(result.data.user.edge_follow.count)
-      },
-      // Note: it's important to handle errors here
-      // instead of a catch() block so that we don't swallow
-      // exceptions from actual bugs in components.
-      (error) => {
-        setLoading(false);
-        setError(error)
-      }
-    );
+    if (followersResponse && followersResponse.data.status === 'ok') {
+      setFollowersData(followersResponse.data.data.user.edge_followed_by.count)
 
-    fetch(`${instagramBaseUrl}${mediasQuery}`)
-    .then(res => res.json())
-    .then(
-      (result) => {
-       setMediaData(result.data.user.edge_owner_to_timeline_media)
-      },
-      // Note: it's important to handle errors here
-      // instead of a catch() block so that we don't swallow
-      // exceptions from actual bugs in components.
-      (error) => {
-        setLoading(false);
-        setError(error)
+      const followingResponse = await axios.get(`${instagramBaseUrl}${followingQuery}`);
+
+      if (followingResponse && followingResponse.data.status === 'ok') {
+        setFollowingData(followingResponse.data.data.user.edge_follow.count)
+
+        const mediaResponse = await axios.get(`${instagramBaseUrl}${mediasQuery}`);
+
+        if (mediaResponse && mediaResponse.data.status === 'ok') {
+          setMediaData(mediaResponse.data.data.user.edge_owner_to_timeline_media)
+        }
       }
-    );
+    }
 
     setLoading(false);
   };
-
-  console.log(followersData)
-  console.log(followingData)
-  console.log(mediaData)
 
   return (
     <div>
