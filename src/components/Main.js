@@ -12,7 +12,7 @@ const Main = () => {
         Instagram insights
       </span>
       <span className={style.subtitle}>
-        by <a href="" target="_blank">Masso dev.</a>
+        by <a href="http://masso.sk/" target="_blank">Masso dev.</a>
       </span>
       <Form />
     </div>
