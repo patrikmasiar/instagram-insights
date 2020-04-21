@@ -3,7 +3,7 @@ import style from './Form.module.css';
 import axios from 'axios';
 
 const Form = () => {
-  const [userId, setUserId] = useState(null); //find your id (all numerical) here : https://codeofaninja.com/tools/find-instagram-user-id
+  const [userId, setUserId] = useState(null);
   const [isLoading, setLoading] = useState(false);
   const [isError, setError] = useState(false);
   const [followersData, setFollowersData] = useState(null);
@@ -44,9 +44,19 @@ const Form = () => {
   };
 
   return (
-    <div>
+    <div className={style.wrapper}>
       {isError !== false && <div>Error, please try again</div>}
-      <button type='button' onClick={getData}>
+      <span className={style.label}>
+        User ID <a href="https://codeofaninja.com/tools/find-instagram-user-id" target="_blank"><i>generate here</i></a>
+      </span>
+      <input
+        type='text'
+        required={true}
+        value={userId === null ? '' : userId}
+        onChange={e => setUserId(e.target.value)}
+        className={style.input}
+      />
+      <button type='button' onClick={getData} className={style.button}>
         Submit
       </button>
     </div>

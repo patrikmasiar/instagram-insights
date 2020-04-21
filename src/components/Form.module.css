@@ -1,0 +1,47 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.label a {
+  text-decoration: none;
+  color: #064db7;
+}
+
+.label a:hover {
+  text-decoration: underline;
+}
+
+.input {
+  outline: none;
+  width: 280px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid lightgray;
+}
+
+.button {
+  outline: none;
+  margin-top: 10px;
+  width: 280px;
+  padding: 15px;
+  border: none;
+  background: #fff;
+  box-shadow: 1px 1px 5px gray;
+  border-radius: 10px;
+  transition: all 250ms ease-out;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.button:hover {
+  box-shadow: 1px 1px 5px black;
+}
