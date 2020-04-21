@@ -1,5 +1,6 @@
 import React from 'react';
 import style from './Main.module.css';
+import Form from './Form';
 
 const IG_LOGO = require('../images/instagram-logo.jpeg');
 
@@ -14,6 +15,9 @@ const Main = () => {
       <span className={style.subtitle}>
         by <a href="" target="_blank">Masso dev.</a>
       </span>
+      <div>
+        <Form />
+      </div>
     </div>
   )
 };
