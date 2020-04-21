@@ -1,14 +1,12 @@
 import React from 'react';
 import {AppConsumer} from './store/store';
-import ChatController from './components/ChatController';
+import Main from './components/Main';
 
 const App = () => (
   <div className="container">
     <AppConsumer>
       {value => (
-        <div>
-          hello world
-        </div>
+        <Main />
       )}
     </AppConsumer>
   </div>
