@@ -43,13 +43,13 @@ const Insights = ({data = null, isLoading = false}) => {
       if (!isLoading) {
         return [
           {
-            date: moment(new Date()).format('YYYY-MM-DD'),
+            date: moment(new Date()).format('DD/MM/YYYY'),
             followers: data.followersData,
             following: data.followingData,
             mediaCount: getEngagement().mediaCount,
             totalComments: getEngagement().totalComments,
             totalLikes: getEngagement().totalLikes,
-            engagementRatio: getEngagement().engagementRatio,
+            engagementRatio: Math.round((getEngagement().engagementRatio + Number.EPSILON) * 100 ) / 100
           }
         ]
       }
@@ -108,7 +108,7 @@ const Insights = ({data = null, isLoading = false}) => {
           Engagement ratio
         </span>
         <span className={style.value}>
-          {getEngagement().engagementRatio}
+          {Math.round((getEngagement().engagementRatio + Number.EPSILON) * 100 ) / 100}
         </span>
       </div>
 
@@ -123,7 +123,7 @@ const Insights = ({data = null, isLoading = false}) => {
                 Export data to XLSX
               </button>
             }>
-              <ExcelSheet data={getExcelDataSet()} name={`${moment(new Date()).format('DD/MM/YYYY')}`}>
+              <ExcelSheet data={getExcelDataSet()} name={`${moment(new Date()).format('YYYY-MM-DD')}`}>
                   <ExcelColumn label="Date" value="date"/>
                   <ExcelColumn label="Followers" value="followers"/>
                   <ExcelColumn label="Following" value="following"/>
