@@ -1,5 +1,11 @@
 import React from 'react';
 import style from './Insights.module.css';
+import ReactExport from "react-data-export";
+import moment from 'moment';
+
+const ExcelFile = ReactExport.ExcelFile;
+const ExcelSheet = ReactExport.ExcelFile.ExcelSheet;
+const ExcelColumn = ReactExport.ExcelFile.ExcelColumn;
 
 const Insights = ({data = null, isLoading = false}) => {
   const getEngagement = () => {
@@ -28,9 +34,27 @@ const Insights = ({data = null, isLoading = false}) => {
       mediaCount: data.mediaData ? parseInt(data.mediaData.count) : 0,
       totalComments: totalComments,
       totalLikes: totalLikes,
-      engagementRatio: engagementRatio
+      engagementRatio: engagementRatio,
     }
   }
+
+  const getExcelDataSet = () => {
+    if (!!data && data.mediaData) {
+      if (!isLoading) {
+        return [
+          {
+            date: moment(new Date()).format('YYYY-MM-DD'),
+            followers: data.followersData,
+            following: data.followingData,
+            mediaCount: getEngagement().mediaCount,
+            totalComments: getEngagement().totalComments,
+            totalLikes: getEngagement().totalLikes,
+            engagementRatio: getEngagement().engagementRatio,
+          }
+        ]
+      }
+    }
+  };
 
   return (
     <div className={style.wrapper}>
@@ -88,9 +112,26 @@ const Insights = ({data = null, isLoading = false}) => {
         </span>
       </div>
 
-      {(!!data && !isLoading) && (
-        <div className={style.downloadButtonWrapper}>
-            download
+      {(!!data && data.followersData && !isLoading) && (
+        <div className={style.downloadWrapper}>
+          <ExcelFile
+            element={<button
+              type="button"
+              className={style.downloadButton}
+            >
+                Export data to XLSX
+              </button>
+            }>
+              <ExcelSheet data={getExcelDataSet()} name={`IG-insights-${moment(new Date()).format('DD/MM/YYYY')}`}>
+                  <ExcelColumn label="Date" value="date"/>
+                  <ExcelColumn label="Followers" value="followers"/>
+                  <ExcelColumn label="Following" value="following"/>
+                  <ExcelColumn label="Media count" value="mediaCount"/>
+                  <ExcelColumn label="Total comments" value="totalComments"/>
+                  <ExcelColumn label="Total likes" value="totalLikes"/>
+                  <ExcelColumn label="Engagement ratio" value="engagementRatio"/>
+              </ExcelSheet>
+          </ExcelFile>
         </div>
       )}
     </div>

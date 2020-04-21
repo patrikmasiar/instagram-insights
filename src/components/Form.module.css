@@ -56,7 +56,7 @@
 
 .button {
   user-select: none;
-  outline: none;
+  outline: none !important;
   margin-top: 10px;
   width: 280px;
   padding: 15px;
