@@ -6,7 +6,6 @@ import Insights from './Insights';
 const Form = () => {
   const [userId, setUserId] = useState(null);
   const [isLoading, setLoading] = useState(false);
-  const [isError, setError] = useState(false);
   const [followersData, setFollowersData] = useState(null);
   const [followingData, setFollowingData] = useState(null);
   const [mediaData, setMediaData] = useState(null);
@@ -48,9 +47,8 @@ const Form = () => {
   return (
     <div className={style.wrapper}>
       {isLoading && <div className={style.loader}><span className={style.loaderLabel}>LOADING DATA...</span></div>}
-      {isError !== false && <div>Error, please try again</div>}
       <span className={style.label}>
-        User ID <a href="https://codeofaninja.com/tools/find-instagram-user-id" target="_blank"><i>generate here</i></a>
+        User ID <a href="https://codeofaninja.com/tools/find-instagram-user-id" rel="noopener noreferrer" target="_blank"><i>generate here</i></a>
       </span>
       <input
         type='text'
