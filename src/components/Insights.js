@@ -115,6 +115,7 @@ const Insights = ({data = null, isLoading = false}) => {
       {(!!data && data.followersData && !isLoading) && (
         <div className={style.downloadWrapper}>
           <ExcelFile
+            filename={`IG-insights-${moment(new Date()).format('DD/MM/YYYY')}`}
             element={<button
               type="button"
               className={style.downloadButton}
@@ -122,7 +123,7 @@ const Insights = ({data = null, isLoading = false}) => {
                 Export data to XLSX
               </button>
             }>
-              <ExcelSheet data={getExcelDataSet()} name={`IG-insights-${moment(new Date()).format('DD/MM/YYYY')}`}>
+              <ExcelSheet data={getExcelDataSet()} name={`${moment(new Date()).format('DD/MM/YYYY')}`}>
                   <ExcelColumn label="Date" value="date"/>
                   <ExcelColumn label="Followers" value="followers"/>
                   <ExcelColumn label="Following" value="following"/>
