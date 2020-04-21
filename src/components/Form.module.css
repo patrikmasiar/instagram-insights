@@ -9,6 +9,7 @@
 .label {
   font-size: 12px;
   font-weight: bold;
+  user-select: none;
 }
 
 .label a {
@@ -26,6 +27,7 @@
   padding: 10px;
   border-radius: 10px;
   border: 1px solid lightgray;
+  user-select: none;
 }
 
 .input:focus {
@@ -33,6 +35,7 @@
 }
 
 .button {
+  user-select: none;
   outline: none;
   margin-top: 10px;
   width: 280px;
