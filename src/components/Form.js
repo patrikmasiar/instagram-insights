@@ -63,6 +63,7 @@ const Form = () => {
       </button>
       <Insights
         data={{followersData, followingData, mediaData}}
+        isLoading={isLoading}
       />
     </div>
   );

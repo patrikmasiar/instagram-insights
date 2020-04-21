@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './Insights.module.css';
 
-const Insights = ({data = null}) => {
+const Insights = ({data = null, isLoading = false}) => {
   const getEngagement = () => {
     let totalComments = 0;
     let totalLikes = 0;
@@ -88,6 +88,11 @@ const Insights = ({data = null}) => {
         </span>
       </div>
 
+      {(!!data && !isLoading) && (
+        <div className={style.downloadButtonWrapper}>
+            download
+        </div>
+      )}
     </div>
   )
 };
